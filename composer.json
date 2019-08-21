@@ -1,0 +1,34 @@
+{
+    "name": "async-bot/example",
+    "description": "Example bot project",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pieter Hordijk",
+            "email": "info@pieterhordijk.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.4",
+        "amphp/log": "^1.0",
+        "async-bot/core": "dev-master",
+        "async-bot/timer-plugin": "dev-master",
+        "async-bot/stackoverflow-chat-driver": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "AsyncBot\\Example\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AsyncBot\\ExampleTest\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
