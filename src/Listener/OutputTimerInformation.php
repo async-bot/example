@@ -21,18 +21,8 @@ final class OutputTimerInformation implements Tick
      */
     public function __invoke(EventData $eventData): Promise
     {
-        if ($eventData->getPreviousTimestamp() === null) {
-            return $this->bot->postMessage(
-                sprintf('The current tick ran at %s and it was the first tick', $eventData->getCurrentTimestamp()->format('H:i:s.u')),
-            );
-        }
-
         return $this->bot->postMessage(
-            sprintf(
-                'The current tick ran at %s, the previous tick ran at %s',
-                $eventData->getCurrentTimestamp()->format('H:i:s.u'),
-                $eventData->getPreviousTimestamp()->format('H:i:s.u'),
-            ),
-        );
+            sprintf('The current time is %s', $eventData->getCurrentTimestamp()->format('H:i:s.u')),
+            );
     }
 }

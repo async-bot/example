@@ -1,0 +1,14 @@
+<?php declare(strict_types=1);
+
+return [
+    'drivers' => [
+        AsyncBot\Driver\StackOverflowChat\Driver::class => [
+            'username' => 'Your Stack Overflow username',
+            'password' => 'Your Stack Overflow password',
+            'roomUrl'  => 'https://chat.stackoverflow.com/rooms/100286/jeeves-playground',
+        ],
+    ],
+    'apis' => [
+        'omdbApiKey' => 'Your OMDB API key',
+    ],
+];

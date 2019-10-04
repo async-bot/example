@@ -15,6 +15,8 @@
         "php": "^7.4",
         "amphp/log": "^1.0",
         "async-bot/core": "dev-master",
+        "async-bot/github-status-plugin": "dev-master",
+        "async-bot/imdb-plugin": "dev-master",
         "async-bot/timer-plugin": "dev-master",
         "async-bot/stackoverflow-chat-driver": "dev-master"
     },
