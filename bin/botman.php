@@ -2,7 +2,7 @@
 
 namespace AsyncBot\Example\Bin;
 
-use Amp\Http\Client\Client;
+use Amp\Http\Client\HttpClientBuilder;
 use AsyncBot\Core\Logger\Factory as LoggerFactory;
 use AsyncBot\Core\Manager;
 use AsyncBot\Driver\StackOverflowChat\Authentication\ValueObject\Credentials;
@@ -29,8 +29,7 @@ $logger = LoggerFactory::buildConsoleLogger();
 /**
  * Set up the HTTP client
  */
-$httpClient = new Client();
-$fwHttpClient = new \AsyncBot\Core\Http\Client($httpClient);
+$httpClient = new \AsyncBot\Core\Http\Client(HttpClientBuilder::buildDefault());
 
 /**
  * Get the configuration
@@ -41,7 +40,6 @@ $configuration = require_once __DIR__ . '/../config.php';
  * Set up bot(s)
  */
 $stackOverflowChatBot = (new StackOverflowChatDriverFactory(
-    $httpClient,
     new Credentials(
         $configuration['drivers'][Driver::class]['username'],
         $configuration['drivers'][Driver::class]['password'],
@@ -52,7 +50,7 @@ $stackOverflowChatBot = (new StackOverflowChatDriverFactory(
 /**
  * Set up plugin(s)
  */
-$imdbPlugin = new ImdbPlugin($fwHttpClient, new ApiKey($configuration['apis']['omdbApiKey']));
+$imdbPlugin = new ImdbPlugin($httpClient, new ApiKey($configuration['apis']['omdbApiKey']));
 
 /**
  * Set up runnable plugin(s)
