@@ -1,6 +1,6 @@
 # Example project based on the Async Bot framework
 
-Currently this is a very basic example which uses the StackOverflow chat driver to log into a chat room and the Timer plugin to post the time in the room every 30 seconds.
+Currently this is a very basic example which uses the StackOverflow chat driver to log into a chat room and the Timer plugin to post the time in the room every 15 minutes.
 
 ## Requirements
 
