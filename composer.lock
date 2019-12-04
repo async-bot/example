@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e6e912f7f565fd3a6c0e8a194dd49bb",
+    "content-hash": "d61a3de453b251dea01af17e37e6e194",
     "packages": [
         {
             "name": "amphp/amp",
@@ -445,12 +445,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/amphp/http-client.git",
-                "reference": "974d631944b976f8595efb1265b5342856534c71"
+                "reference": "c371feeb8047d199158c68d9e22ccc20d9071f09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amphp/http-client/zipball/974d631944b976f8595efb1265b5342856534c71",
-                "reference": "974d631944b976f8595efb1265b5342856534c71",
+                "url": "https://api.github.com/repos/amphp/http-client/zipball/c371feeb8047d199158c68d9e22ccc20d9071f09",
+                "reference": "c371feeb8047d199158c68d9e22ccc20d9071f09",
                 "shasum": ""
             },
             "require": {
@@ -514,7 +514,7 @@
                 "non-blocking",
                 "rest"
             ],
-            "time": "2019-12-03T20:49:12+00:00"
+            "time": "2019-12-04T18:30:26+00:00"
         },
         {
             "name": "amphp/http-client-cookies",
@@ -1262,17 +1262,105 @@
             "time": "2019-11-29T10:54:20+00:00"
         },
         {
+            "name": "async-bot/packagist-finder-plugin",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/async-bot/packagist-finder-plugin.git",
+                "reference": "99e71beb5949f824d17d30e696d928a8aeca66cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/async-bot/packagist-finder-plugin/zipball/99e71beb5949f824d17d30e696d928a8aeca66cf",
+                "reference": "99e71beb5949f824d17d30e696d928a8aeca66cf",
+                "shasum": ""
+            },
+            "require": {
+                "amphp/amp": "^2.2.0",
+                "async-bot/core": "dev-master",
+                "php": "^7.4"
+            },
+            "require-dev": {
+                "infection/infection": "^0.13.4",
+                "maglnet/composer-require-checker": "^2.0",
+                "phpunit/phpunit": "^8.3",
+                "slevomat/coding-standard": "^5.0.4",
+                "squizlabs/php_codesniffer": "^3.4.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AsyncBot\\Plugin\\PackagistFinder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Packagist finder plugin",
+            "time": "2019-12-04T21:16:17+00:00"
+        },
+        {
+            "name": "async-bot/php-bugs-plugin",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/async-bot/php-bugs-plugin.git",
+                "reference": "c44999d6273012aa19cd3428f2c61258974a9ffb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/async-bot/php-bugs-plugin/zipball/c44999d6273012aa19cd3428f2c61258974a9ffb",
+                "reference": "c44999d6273012aa19cd3428f2c61258974a9ffb",
+                "shasum": ""
+            },
+            "require": {
+                "amphp/amp": "^2.2.0",
+                "amphp/log": "^1.0",
+                "async-bot/core": "dev-master",
+                "ext-dom": "*",
+                "ext-libxml": "*",
+                "php": "^7.4",
+                "room11/dom-utils": "^1.1"
+            },
+            "require-dev": {
+                "infection/infection": "^0.13.4",
+                "maglnet/composer-require-checker": "^2.0",
+                "phpunit/phpunit": "^8.3",
+                "slevomat/coding-standard": "^5.0.4",
+                "squizlabs/php_codesniffer": "^3.4.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AsyncBot\\Plugin\\PhpBugs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pieter Hordijk",
+                    "email": "info@pieterhordijk.com"
+                }
+            ],
+            "description": "PHP bugs plugin",
+            "time": "2019-11-29T15:39:26+00:00"
+        },
+        {
             "name": "async-bot/stackoverflow-chat-driver",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/async-bot/stackoverflow-chat-driver.git",
-                "reference": "63c0ffc0886df3d7e07bccb8ef3a025a987cb4d7"
+                "reference": "2a296daff57ef3e4e4008f93a6f1bbcc1e6c9755"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/async-bot/stackoverflow-chat-driver/zipball/63c0ffc0886df3d7e07bccb8ef3a025a987cb4d7",
-                "reference": "63c0ffc0886df3d7e07bccb8ef3a025a987cb4d7",
+                "url": "https://api.github.com/repos/async-bot/stackoverflow-chat-driver/zipball/2a296daff57ef3e4e4008f93a6f1bbcc1e6c9755",
+                "reference": "2a296daff57ef3e4e4008f93a6f1bbcc1e6c9755",
                 "shasum": ""
             },
             "require": {
@@ -1313,7 +1401,7 @@
                 }
             ],
             "description": "StackOverflow Chat Driver",
-            "time": "2019-12-03T20:55:58+00:00"
+            "time": "2019-12-03T23:19:09+00:00"
         },
         {
             "name": "async-bot/timer-plugin",
@@ -1360,6 +1448,47 @@
             ],
             "description": "Timer plugin for the Async Bot framework",
             "time": "2019-08-22T08:46:22+00:00"
+        },
+        {
+            "name": "async-bot/word-of-the-day-plugin",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/async-bot/word-of-the-day-plugin.git",
+                "reference": "34865d3ab4abfe3cb73adb295de3c20f8db376f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/async-bot/word-of-the-day-plugin/zipball/34865d3ab4abfe3cb73adb295de3c20f8db376f5",
+                "reference": "34865d3ab4abfe3cb73adb295de3c20f8db376f5",
+                "shasum": ""
+            },
+            "require": {
+                "amphp/amp": "^2.2.0",
+                "async-bot/core": "dev-master",
+                "ext-dom": "*",
+                "php": "^7.4",
+                "room11/dom-utils": "^1.1"
+            },
+            "require-dev": {
+                "infection/infection": "^0.13.4",
+                "maglnet/composer-require-checker": "^2.0",
+                "phpunit/phpunit": "^8.3",
+                "slevomat/coding-standard": "^5.0.4",
+                "squizlabs/php_codesniffer": "^3.4.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AsyncBot\\Plugin\\WordOfTheDay\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Word of the day plugin",
+            "time": "2019-11-29T20:26:00+00:00"
         },
         {
             "name": "cash/lrucache",
@@ -2017,13 +2146,16 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "amphp/http-client": 20,
+        "amphp/http-client-cookies": 20,
         "async-bot/core": 20,
         "async-bot/github-status-plugin": 20,
         "async-bot/imdb-plugin": 20,
-        "async-bot/timer-plugin": 20,
+        "async-bot/packagist-finder-plugin": 20,
+        "async-bot/php-bugs-plugin": 20,
         "async-bot/stackoverflow-chat-driver": 20,
-        "amphp/http-client": 20,
-        "amphp/http-client-cookies": 20
+        "async-bot/timer-plugin": 20,
+        "async-bot/word-of-the-day-plugin": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
