@@ -43,7 +43,6 @@ final class SearchByTitle
             try {
                 return yield $this->plugin->searchByTitle($keywords);
             } catch (\Throwable $e) {
-                var_dump($e);
                 return null;
             }
         });

@@ -43,8 +43,6 @@ final class GetByPackageName
             try {
                 return yield $this->plugin->getByPackageName($packageName);
             } catch (\Throwable $e) {
-                var_dump($e);
-
                 return null;
             }
         });
