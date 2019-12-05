@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d61a3de453b251dea01af17e37e6e194",
+    "content-hash": "e6cc54d7313211504c2b46af6bb64243",
     "packages": [
         {
             "name": "amphp/amp",
@@ -1262,17 +1262,56 @@
             "time": "2019-11-29T10:54:20+00:00"
         },
         {
+            "name": "async-bot/open-grok-plugin",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/async-bot/open-grok-plugin.git",
+                "reference": "3177b0ec799fed6ed50e64263bec47bdda1e383a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/async-bot/open-grok-plugin/zipball/3177b0ec799fed6ed50e64263bec47bdda1e383a",
+                "reference": "3177b0ec799fed6ed50e64263bec47bdda1e383a",
+                "shasum": ""
+            },
+            "require": {
+                "amphp/amp": "^2.2.0",
+                "async-bot/core": "dev-master",
+                "php": "^7.4"
+            },
+            "require-dev": {
+                "infection/infection": "^0.13.4",
+                "maglnet/composer-require-checker": "^2.0",
+                "phpunit/phpunit": "^8.3",
+                "slevomat/coding-standard": "^5.0.4",
+                "squizlabs/php_codesniffer": "^3.4.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AsyncBot\\Plugin\\OpenGrok\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "OpenGrok plugin",
+            "time": "2019-12-05T21:57:38+00:00"
+        },
+        {
             "name": "async-bot/packagist-finder-plugin",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/async-bot/packagist-finder-plugin.git",
-                "reference": "99e71beb5949f824d17d30e696d928a8aeca66cf"
+                "reference": "8226943ccd1efb3bb62180572b5267fadf8a2518"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/async-bot/packagist-finder-plugin/zipball/99e71beb5949f824d17d30e696d928a8aeca66cf",
-                "reference": "99e71beb5949f824d17d30e696d928a8aeca66cf",
+                "url": "https://api.github.com/repos/async-bot/packagist-finder-plugin/zipball/8226943ccd1efb3bb62180572b5267fadf8a2518",
+                "reference": "8226943ccd1efb3bb62180572b5267fadf8a2518",
                 "shasum": ""
             },
             "require": {
@@ -1298,7 +1337,7 @@
                 "MIT"
             ],
             "description": "Packagist finder plugin",
-            "time": "2019-12-04T21:16:17+00:00"
+            "time": "2019-12-04T22:03:44+00:00"
         },
         {
             "name": "async-bot/php-bugs-plugin",
@@ -2151,6 +2190,7 @@
         "async-bot/core": 20,
         "async-bot/github-status-plugin": 20,
         "async-bot/imdb-plugin": 20,
+        "async-bot/open-grok-plugin": 20,
         "async-bot/packagist-finder-plugin": 20,
         "async-bot/php-bugs-plugin": 20,
         "async-bot/stackoverflow-chat-driver": 20,
