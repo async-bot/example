@@ -19,6 +19,7 @@
         "async-bot/core": "dev-master",
         "async-bot/github-status-plugin": "dev-master",
         "async-bot/imdb-plugin": "dev-master",
+        "async-bot/linux-manual-pages-plugin": "dev-master",
         "async-bot/open-grok-plugin": "dev-master",
         "async-bot/packagist-finder-plugin": "dev-master",
         "async-bot/php-bugs-plugin": "dev-master",

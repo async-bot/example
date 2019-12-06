@@ -10,6 +10,7 @@ use AsyncBot\Driver\StackOverflowChat\Authentication\ValueObject\Credentials;
 use AsyncBot\Driver\StackOverflowChat\Driver;
 use AsyncBot\Driver\StackOverflowChat\Factory as StackOverflowChatDriverFactory;
 use AsyncBot\Example\Command\Imdb\Listener\Listener as ImdbCommandListener;
+use AsyncBot\Example\Command\Man\Listener\Listener as ManListener;
 use AsyncBot\Example\Command\OpenGrok\Listener\Listener as OpenGrokListener;
 use AsyncBot\Example\Command\Packagist\Listener\Listener as PackagistFinderListener;
 use AsyncBot\Example\Command\WordOfTheDay\Listener\Listener as WordOfTheDayCommandListener;
@@ -21,10 +22,11 @@ use AsyncBot\Plugin\GitHubStatus\Retriever\Http;
 use AsyncBot\Plugin\GitHubStatus\Storage\InMemoryRepository;
 use AsyncBot\Plugin\Imdb\Plugin as ImdbPlugin;
 use AsyncBot\Plugin\Imdb\ValueObject\ApiKey;
+use AsyncBot\Plugin\LinuxManualPages\Plugin as LinuxManualPagesPlugin;
 use AsyncBot\Plugin\OpenGrok\Plugin as OpenGrokPlugin;
 use AsyncBot\Plugin\PackagistFinder\Plugin as PackagistFinderPlugin;
 use AsyncBot\Plugin\PhpBugs\Parser\Html as PhpBugsParser;
-use AsyncBot\Plugin\PhpBugs\Plugin;
+use AsyncBot\Plugin\PhpBugs\Plugin as PhpBugsPlugin;
 use AsyncBot\Plugin\PhpBugs\Retriever\GetAllBugs;
 use AsyncBot\Plugin\PhpBugs\Storage\InMemoryRepository as PhpBugsStorage;
 use AsyncBot\Plugin\Timer\Plugin as TimerPlugin;
@@ -65,13 +67,14 @@ $imdbPlugin         = new ImdbPlugin($httpClient, new ApiKey($configuration['api
 $wordOfTheDayPlugin = new WordOfTheDayPlugin($httpClient);
 $packagistPlugin    = new PackagistFinderPlugin($httpClient);
 $openGrokPlugin     = new OpenGrokPlugin($httpClient);
+$linuxManPlugin     = new LinuxManualPagesPlugin($httpClient);
 
 /**
  * Set up runnable plugin(s)
  */
 $timerPlugin        = new TimerPlugin($logger, new \DateInterval('PT15M'));
 $gitHubStatusPlugin = new GitHubStatusPlugin($logger, new Http($httpClient, new Html()), new InMemoryRepository());
-$phpBugsPlugin      = new Plugin($logger, new GetAllBugs($httpClient, new PhpBugsParser()), new PhpBugsStorage(), new \DateInterval('PT1M'));
+$phpBugsPlugin      = new PhpBugsPlugin($logger, new GetAllBugs($httpClient, new PhpBugsParser()), new PhpBugsStorage(), new \DateInterval('PT1M'));
 
 /**
  * Register for events
@@ -86,6 +89,7 @@ $stackOverflowChatBot->onNewMessage(new ImdbCommandListener($stackOverflowChatBo
 $stackOverflowChatBot->onNewMessage(new WordOfTheDayCommandListener($stackOverflowChatBot, $wordOfTheDayPlugin));
 $stackOverflowChatBot->onNewMessage(new PackagistFinderListener($stackOverflowChatBot, $packagistPlugin));
 $stackOverflowChatBot->onNewMessage(new OpenGrokListener($stackOverflowChatBot, $openGrokPlugin));
+$stackOverflowChatBot->onNewMessage(new ManListener($stackOverflowChatBot, $linuxManPlugin));
 
 /**
  * Run the bot minions

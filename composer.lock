@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e6cc54d7313211504c2b46af6bb64243",
+    "content-hash": "d8f068c5e0248fad9f1875cf6b9c3018",
     "packages": [
         {
             "name": "amphp/amp",
@@ -1262,6 +1262,46 @@
             "time": "2019-11-29T10:54:20+00:00"
         },
         {
+            "name": "async-bot/linux-manual-pages-plugin",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/async-bot/linux-manual-pages-plugin.git",
+                "reference": "85cad6f04beb53595431ba4d89368aeea383c6b3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/async-bot/linux-manual-pages-plugin/zipball/85cad6f04beb53595431ba4d89368aeea383c6b3",
+                "reference": "85cad6f04beb53595431ba4d89368aeea383c6b3",
+                "shasum": ""
+            },
+            "require": {
+                "amphp/amp": "^2.2.0",
+                "async-bot/core": "dev-master",
+                "ext-dom": "*",
+                "php": "^7.4"
+            },
+            "require-dev": {
+                "infection/infection": "^0.13.4",
+                "maglnet/composer-require-checker": "^2.0",
+                "phpunit/phpunit": "^8.3",
+                "slevomat/coding-standard": "^5.0.4",
+                "squizlabs/php_codesniffer": "^3.4.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AsyncBot\\Plugin\\LinuxManualPages\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Linux manual pages plugin",
+            "time": "2019-12-06T19:26:55+00:00"
+        },
+        {
             "name": "async-bot/open-grok-plugin",
             "version": "dev-master",
             "source": {
@@ -2190,6 +2230,7 @@
         "async-bot/core": 20,
         "async-bot/github-status-plugin": 20,
         "async-bot/imdb-plugin": 20,
+        "async-bot/linux-manual-pages-plugin": 20,
         "async-bot/open-grok-plugin": 20,
         "async-bot/packagist-finder-plugin": 20,
         "async-bot/php-bugs-plugin": 20,
