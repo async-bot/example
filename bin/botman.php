@@ -15,6 +15,7 @@ use AsyncBot\Example\Command\OpenGrok\Listener\Listener as OpenGrokListener;
 use AsyncBot\Example\Command\Packagist\Listener\Listener as PackagistFinderListener;
 use AsyncBot\Example\Command\WordOfTheDay\Listener\Listener as WordOfTheDayCommandListener;
 use AsyncBot\Example\Listener\OutputGitHubStatusChange;
+use AsyncBot\Example\Listener\OutputNewPhpBugs;
 use AsyncBot\Example\Listener\OutputTimerInformation;
 use AsyncBot\Plugin\GitHubStatus\Parser\Html;
 use AsyncBot\Plugin\GitHubStatus\Plugin as GitHubStatusPlugin;
@@ -81,6 +82,7 @@ $phpBugsPlugin      = new PhpBugsPlugin($logger, new GetAllBugs($httpClient, new
  */
 $timerPlugin->onTick(new OutputTimerInformation($stackOverflowChatBot));
 $gitHubStatusPlugin->onStatusChange(new OutputGitHubStatusChange($stackOverflowChatBot));
+$phpBugsPlugin->onNewBugs(new OutputNewPhpBugs($stackOverflowChatBot));
 
 /**
  * Add listeners for commands
