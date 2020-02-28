@@ -1,18 +1,18 @@
 <?php declare(strict_types=1);
 
-namespace AsyncBot\Example\Command\Packagist\Responder;
+namespace AsyncBot\Example\Command\OpenGrok\Responder;
 
 use Amp\Promise;
 use AsyncBot\Core\Driver;
 use AsyncBot\Core\Message\Node\Message;
 use AsyncBot\Core\Message\Node\Text;
-use AsyncBot\Example\Command\Packagist\Formatter\SearchResult;
-use AsyncBot\Plugin\PackagistFinder\Collection\SearchResults;
+use AsyncBot\Example\Command\OpenGrok\Formatter\Result;
+use AsyncBot\Plugin\OpenGrok\Collection\SearchResults;
 use function Amp\call;
 
-final class Search
+abstract class Responder
 {
-    private Driver $bot;
+    protected Driver $bot;
 
     public function __construct(Driver $bot)
     {
@@ -22,11 +22,17 @@ final class Search
     public function respond(SearchResults $searchResults): Promise
     {
         return call(function () use ($searchResults) {
+            if (count($searchResults) === 1) {
+                return $this->bot->postMessage((new Result())->format(
+                    $searchResults->getFirst(),
+                ));
+            }
+
             $headingMessage = (new Message())
-                ->appendNode(new Text(sprintf('Total number of search results: %d', $searchResults->getTotalNumberOfResults())))
+                ->appendNode(new Text(sprintf('Total number of search results: %d', $searchResults->count())))
             ;
 
-            if ($searchResults->getTotalNumberOfResults() > 5) {
+            if (count($searchResults) > 5) {
                 $headingMessage
                     ->appendNode(new Text('. '))
                     ->appendNode(new Text('Showing the first 5 results.'))
@@ -37,11 +43,15 @@ final class Search
 
             foreach ($searchResults as $index => $searchResult) {
                 if ($index === 5) {
-                    break;
+                    return null;
                 }
 
-                yield $this->bot->postMessage((new SearchResult())->format($searchResult));
+                yield $this->bot->postMessage(
+                    (new Result())->format($searchResult)->prependNode(new Text('• ')),
+                );
             }
+
+            return null;
         });
     }
 }

@@ -3,7 +3,11 @@
 namespace AsyncBot\Example\Command\Man\Responder;
 
 use Amp\Promise;
-use AsyncBot\Driver\StackOverflowChat\Driver;
+use AsyncBot\Core\Driver;
+use AsyncBot\Core\Message\Node\BlockQuote;
+use AsyncBot\Core\Message\Node\Code;
+use AsyncBot\Core\Message\Node\Message;
+use AsyncBot\Core\Message\Node\Text;
 use AsyncBot\Plugin\LinuxManualPages\ValueObject\ManualPage;
 use function Amp\call;
 
@@ -19,22 +23,25 @@ final class ManPage
     public function respond(?ManualPage $manualPage): Promise
     {
         if ($manualPage === null) {
-            return $this->bot->postMessage('Could not find the manual');
+            return $this->bot->postMessage(
+                (new Message())->appendNode(new Text('Could not find the manual')),
+            );
         }
 
         return call(function () use ($manualPage) {
-            yield $this->bot->postMessage(sprintf(
-                '`%s` - %s',
-                $manualPage->getName(),
-                $manualPage->getShortDescription(),
-            ));
-
             yield $this->bot->postMessage(
-                sprintf('`%s`', $manualPage->getSynopsis()),
+                (new Message())
+                    ->appendNode((new Code())->appendNode(new Text($manualPage->getName())))
+                    ->appendNode(new Text(' - '))
+                    ->appendNode(new Text($manualPage->getShortDescription())),
             );
 
             yield $this->bot->postMessage(
-                sprintf('> %s', $manualPage->getLongDescription()),
+                (new Message())->appendNode((new Code())->appendNode(new Text($manualPage->getSynopsis()))),
+            );
+
+            yield $this->bot->postMessage(
+                (new Message())->appendNode((new BlockQuote())->appendNode(new Text($manualPage->getLongDescription()))),
             );
         });
     }

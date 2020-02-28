@@ -4,6 +4,8 @@ namespace AsyncBot\Example\Listener;
 
 use Amp\Promise;
 use AsyncBot\Core\Driver;
+use AsyncBot\Core\Message\Node\Message;
+use AsyncBot\Core\Message\Node\Text;
 use AsyncBot\Plugin\GitHubStatus\Event\Data\ComponentIssue;
 use AsyncBot\Plugin\GitHubStatus\Event\Data\Status;
 use AsyncBot\Plugin\GitHubStatus\Event\Listener\StatusChange;
@@ -23,16 +25,20 @@ final class OutputGitHubStatusChange implements StatusChange
     public function __invoke(Status $status): Promise
     {
         if (!$status->hasActiveIncident()) {
-            return $this->bot->postMessage('[tag:github-status] All issues have been resolved!');
+            return $this->bot->postMessage(
+                (new Message())->appendNode(new Text('[tag:github-status] All issues have been resolved!')),
+            );
         }
 
         return $this->bot->postMessage(
-            sprintf(
-                '[tag:github-status] %s | %s',
-                $status->getOverallStatus(),
-                implode(' | ', $this->formatActiveIssues($status)),
-            ),
-            );
+            (new Message())->appendNode(new Text(
+                sprintf(
+                    '[tag:github-status] %s%s',
+                    $status->getOverallStatus(),
+                    implode(' | ', $this->formatActiveIssues($status)),
+                ),
+            )),
+        );
     }
 
     /**
@@ -44,7 +50,7 @@ final class OutputGitHubStatusChange implements StatusChange
 
         /** @var ComponentIssue $issue */
         foreach ($status->getIssues() as $issue) {
-            $formattedIssues[] = sprintf('%s has %s', $issue->getName(), $issue->getIssue());
+            $formattedIssues[] = sprintf(' | %s has %s', $issue->getName(), $issue->getIssue());
         }
 
         return $formattedIssues;

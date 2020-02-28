@@ -4,7 +4,11 @@ namespace AsyncBot\Example\Command\WordOfTheDay\Listener;
 
 use Amp\Promise;
 use Amp\Success;
-use AsyncBot\Driver\StackOverflowChat\Driver;
+use AsyncBot\Core\Driver;
+use AsyncBot\Core\Message\Node\Bold;
+use AsyncBot\Core\Message\Node\Message as MessageNode;
+use AsyncBot\Core\Message\Node\Text;
+use AsyncBot\Core\Message\Node\Url;
 use AsyncBot\Driver\StackOverflowChat\Event\Data\Message;
 use AsyncBot\Driver\StackOverflowChat\Event\Listener\MessagePosted;
 use AsyncBot\Plugin\WordOfTheDay\Plugin;
@@ -37,12 +41,10 @@ final class Listener implements MessagePosted
             $wordOfTheDay = yield $this->plugin->getFromMerriamWebster();
 
             yield $this->bot->postMessage(
-                sprintf(
-                    '[**%s**](%s) %s',
-                    $wordOfTheDay->getWord(),
-                    $wordOfTheDay->getUrl(),
-                    $wordOfTheDay->getDefinition(),
-                ),
+                (new MessageNode())
+                    ->appendNode((new Url($wordOfTheDay->getUrl()))->appendNode((new Bold())->appendNode(new Text($wordOfTheDay->getWord()))))
+                    ->appendNode(new Text(' '))
+                    ->appendNode(new Text($wordOfTheDay->getDefinition()))
             );
         });
     }

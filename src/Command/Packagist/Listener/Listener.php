@@ -4,7 +4,7 @@ namespace AsyncBot\Example\Command\Packagist\Listener;
 
 use Amp\Promise;
 use Amp\Success;
-use AsyncBot\Driver\StackOverflowChat\Driver;
+use AsyncBot\Core\Driver;
 use AsyncBot\Driver\StackOverflowChat\Event\Data\Message;
 use AsyncBot\Driver\StackOverflowChat\Event\Listener\MessagePosted;
 use AsyncBot\Example\Command\Packagist\Handler\GetByPackageName;
