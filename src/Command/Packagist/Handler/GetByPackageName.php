@@ -3,7 +3,7 @@
 namespace AsyncBot\Example\Command\Packagist\Handler;
 
 use Amp\Promise;
-use AsyncBot\Driver\StackOverflowChat\Driver;
+use AsyncBot\Core\Driver;
 use AsyncBot\Example\Command\Packagist\Responder\Package as Responder;
 use AsyncBot\Plugin\PackagistFinder\Plugin;
 use AsyncBot\Plugin\PackagistFinder\ValueObject\Package;

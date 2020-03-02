@@ -6,6 +6,8 @@ use Amp\Promise;
 use Amp\Success;
 use AsyncBot\Core\Driver;
 use AsyncBot\Core\Message\Node\Message;
+use AsyncBot\Core\Message\Node\Separator;
+use AsyncBot\Core\Message\Node\Tag;
 use AsyncBot\Core\Message\Node\Text;
 use AsyncBot\Core\Message\Node\Url;
 use AsyncBot\Plugin\PhpBugs\Event\Data\Bugs;
@@ -33,19 +35,24 @@ final class OutputNewPhpBugs implements NewBugs
 
         return call(function () use ($bugs) {
             foreach ($bugs as $bug) {
-                $message = (new Message())->appendNode(new Text('[tag:php] '));
+                $message = (new Message())
+                    ->appendNode((new Tag())->appendNode(new Text('php')))
+                    ->appendNode(new Text(' '))
+                ;
+
+                $bugTypeText = new Text('bug');
 
                 if ($bug->getType()->equals(new Type(Type::DOCUMENTATION_PROBLEM))) {
-                    $message->appendNode(new Text('[tag:doc-bug] '));
-                } else {
-                    $message->appendNode(new Text('[tag:bug] '));
+                    $bugTypeText = new Text('doc-bug');
                 }
 
                 $message
+                    ->appendNode((new Tag())->appendNode($bugTypeText))
+                    ->appendNode(new Text(' '))
                     ->appendNode(new Text($bug->getSummary()))
-                    ->appendNode(new Text(' ・ '))
+                    ->appendNode(new Separator())
                     ->appendNode(new Text($bug->getPackage()))
-                    ->appendNode(new Text(' ・ '))
+                    ->appendNode(new Separator())
                     ->appendNode((new Url($bug->getUrl()))->appendNode(new Text('#' . $bug->getId())))
                 ;
 

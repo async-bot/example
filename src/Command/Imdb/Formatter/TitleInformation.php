@@ -3,6 +3,9 @@
 namespace AsyncBot\Example\Command\Imdb\Formatter;
 
 use AsyncBot\Core\Message\Node\Message;
+use AsyncBot\Core\Message\Node\Node;
+use AsyncBot\Core\Message\Node\Separator;
+use AsyncBot\Core\Message\Node\Tag;
 use AsyncBot\Core\Message\Node\Text;
 use AsyncBot\Core\Message\Node\Url;
 use AsyncBot\Plugin\Imdb\ValueObject\Result\Ratings;
@@ -12,14 +15,26 @@ final class TitleInformation
 {
     public function format(Title $title): Message
     {
-        return (new Message())
+        $message = (new Message())
             ->appendNode($this->formatTitle($title))
             ->appendNode(new Text(' '))
             ->appendNode(new Text(sprintf('(%d)', $title->getYear())))
-            ->appendNode(new Text(' | '))
-            ->appendNode(new Text($this->getGenresAsTags($title->getGenre())))
-            ->appendNode(new Text($this->formatRatings($title->getRatings())))
+            ->appendNode(new Separator())
         ;
+
+        foreach ($this->getGenreTags($title) as $index => $genreTag) {
+            if ($index !== 0) {
+                $message->appendNode(new Text(' '));
+            }
+
+            $message->appendNode($genreTag);
+        }
+
+        foreach ($this->getRatings($title->getRatings()) as $ratingNode) {
+            $message->appendNode($ratingNode);
+        }
+
+        return $message;
     }
 
     private function formatTitle(Title $title): Url
@@ -31,25 +46,33 @@ final class TitleInformation
         return $url;
     }
 
-    private function getGenresAsTags(string $genres): string
+    /**
+     * @return array<Tag>
+     */
+    private function getGenreTags(Title $title): array
     {
-        $genres = explode(', ', $genres);
+        $genres = explode(', ', $title->getGenre());
 
-        return implode(' ', array_map(fn (string $genre) => sprintf('[tag:%s]', $genre), $genres));
+        return array_map(fn (string $genre) => (new Tag())->appendNode(new Text($genre)), $genres);
     }
 
-    private function formatRatings(Ratings $ratings): string
+    /**
+     * @return array<Node>
+     */
+    private function getRatings(Ratings $ratings): array
     {
-        $formattedRatings = '';
+        $nodes = [];
 
         if ($ratings->getImdb() !== null) {
-            $formattedRatings .= sprintf(' | 🎥 %s', $ratings->getImdb()->getValue());
+            $nodes[] = new Separator();
+            $nodes[] = new Text(sprintf('🎥 %s', $ratings->getImdb()->getValue()));
         }
 
         if ($ratings->getRottenTomatoes() !== null) {
-            $formattedRatings .= sprintf(' | 🍅 %s', $ratings->getRottenTomatoes()->getValue());
+            $nodes[] = new Separator();
+            $nodes[] = new Text(sprintf('🍅 %s', $ratings->getRottenTomatoes()->getValue()));
         }
 
-        return $formattedRatings;
+        return $nodes;
     }
 }

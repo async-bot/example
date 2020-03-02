@@ -7,6 +7,7 @@ use AsyncBot\Core\Driver;
 use AsyncBot\Core\Message\Node\BlockQuote;
 use AsyncBot\Core\Message\Node\Code;
 use AsyncBot\Core\Message\Node\Message;
+use AsyncBot\Core\Message\Node\Separator;
 use AsyncBot\Core\Message\Node\Text;
 use AsyncBot\Plugin\LinuxManualPages\ValueObject\ManualPage;
 use function Amp\call;
@@ -32,7 +33,7 @@ final class ManPage
             yield $this->bot->postMessage(
                 (new Message())
                     ->appendNode((new Code())->appendNode(new Text($manualPage->getName())))
-                    ->appendNode(new Text(' - '))
+                    ->appendNode(new Separator())
                     ->appendNode(new Text($manualPage->getShortDescription())),
             );
 

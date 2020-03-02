@@ -25,7 +25,7 @@ final class OutputTimerInformation implements Tick
     {
         return $this->bot->postMessage(
             (new Message())
-                ->appendNode(new Text('The current time is '))
+                ->appendNode(new Text('The current time is: '))
                 ->appendNode(new Text($eventData->getCurrentTimestamp()->format('H:i:s.u')))
             );
     }

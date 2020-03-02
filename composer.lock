@@ -1110,12 +1110,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/amphp/websocket-client.git",
-                "reference": "95244d981a6582d51a95949825eac28c813434cf"
+                "reference": "f42543a99c56d4635dfd9f06cdf32dfc147f4836"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amphp/websocket-client/zipball/95244d981a6582d51a95949825eac28c813434cf",
-                "reference": "95244d981a6582d51a95949825eac28c813434cf",
+                "url": "https://api.github.com/repos/amphp/websocket-client/zipball/f42543a99c56d4635dfd9f06cdf32dfc147f4836",
+                "reference": "f42543a99c56d4635dfd9f06cdf32dfc147f4836",
                 "shasum": ""
             },
             "require": {
@@ -1173,7 +1173,7 @@
                 "non-blocking",
                 "websocket"
             ],
-            "time": "2020-02-22T06:24:09+00:00"
+            "time": "2020-02-26T19:19:00+00:00"
         },
         {
             "name": "amphp/windows-registry",
@@ -1222,12 +1222,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/async-bot/core.git",
-                "reference": "53331d43d4cf9a377e8b69f2a5869ce134189e25"
+                "reference": "67bcf5b800b816f32f2a066e18de07319457250a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/async-bot/core/zipball/53331d43d4cf9a377e8b69f2a5869ce134189e25",
-                "reference": "53331d43d4cf9a377e8b69f2a5869ce134189e25",
+                "url": "https://api.github.com/repos/async-bot/core/zipball/67bcf5b800b816f32f2a066e18de07319457250a",
+                "reference": "67bcf5b800b816f32f2a066e18de07319457250a",
                 "shasum": ""
             },
             "require": {
@@ -1270,7 +1270,7 @@
                 }
             ],
             "description": "Shared code for the Async Bot project",
-            "time": "2020-02-28T16:35:31+00:00"
+            "time": "2020-03-02T11:43:23+00:00"
         },
         {
             "name": "async-bot/github-status-plugin",
@@ -1540,12 +1540,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/async-bot/stackoverflow-chat-driver.git",
-                "reference": "fd7c31d3f6e03db8ae02691247beff479a6f5f74"
+                "reference": "9e2bfb81821237d4634c72d6e2b4b5b30bf0fd9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/async-bot/stackoverflow-chat-driver/zipball/fd7c31d3f6e03db8ae02691247beff479a6f5f74",
-                "reference": "fd7c31d3f6e03db8ae02691247beff479a6f5f74",
+                "url": "https://api.github.com/repos/async-bot/stackoverflow-chat-driver/zipball/9e2bfb81821237d4634c72d6e2b4b5b30bf0fd9c",
+                "reference": "9e2bfb81821237d4634c72d6e2b4b5b30bf0fd9c",
                 "shasum": ""
             },
             "require": {
@@ -1586,7 +1586,7 @@
                 }
             ],
             "description": "StackOverflow Chat Driver",
-            "time": "2020-02-28T15:08:29+00:00"
+            "time": "2020-03-02T11:57:22+00:00"
         },
         {
             "name": "async-bot/timer-plugin",
