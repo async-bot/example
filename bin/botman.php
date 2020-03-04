@@ -13,6 +13,7 @@ use AsyncBot\Example\Command\Imdb\Listener\Listener as ImdbCommandListener;
 use AsyncBot\Example\Command\Man\Listener\Listener as ManListener;
 use AsyncBot\Example\Command\OpenGrok\Listener\Listener as OpenGrokListener;
 use AsyncBot\Example\Command\Packagist\Listener\Listener as PackagistFinderListener;
+use AsyncBot\Example\Command\Wikipedia\Listener\Listener as WikipediaListener;
 use AsyncBot\Example\Command\WordOfTheDay\Listener\Listener as WordOfTheDayCommandListener;
 use AsyncBot\Example\Listener\OutputGitHubStatusChange;
 use AsyncBot\Example\Listener\OutputNewPhpBugs;
@@ -31,6 +32,7 @@ use AsyncBot\Plugin\PhpBugs\Plugin as PhpBugsPlugin;
 use AsyncBot\Plugin\PhpBugs\Retriever\GetAllBugs;
 use AsyncBot\Plugin\PhpBugs\Storage\InMemoryRepository as PhpBugsStorage;
 use AsyncBot\Plugin\Timer\Plugin as TimerPlugin;
+use AsyncBot\Plugin\Wikipedia\Plugin as WikipediaPlugin;
 use AsyncBot\Plugin\WordOfTheDay\Plugin as WordOfTheDayPlugin;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -69,6 +71,7 @@ $wordOfTheDayPlugin = new WordOfTheDayPlugin($httpClient);
 $packagistPlugin    = new PackagistFinderPlugin($httpClient);
 $openGrokPlugin     = new OpenGrokPlugin($httpClient);
 $linuxManPlugin     = new LinuxManualPagesPlugin($httpClient);
+$wikipediaPlugin    = new WikipediaPlugin($httpClient);
 
 /**
  * Set up runnable plugin(s)
@@ -92,6 +95,7 @@ $stackOverflowChatBot->onNewMessage(new WordOfTheDayCommandListener($stackOverfl
 $stackOverflowChatBot->onNewMessage(new PackagistFinderListener($stackOverflowChatBot, $packagistPlugin));
 $stackOverflowChatBot->onNewMessage(new OpenGrokListener($stackOverflowChatBot, $openGrokPlugin));
 $stackOverflowChatBot->onNewMessage(new ManListener($stackOverflowChatBot, $linuxManPlugin));
+$stackOverflowChatBot->onNewMessage(new WikipediaListener($stackOverflowChatBot, $wikipediaPlugin));
 
 /**
  * Run the bot minions
