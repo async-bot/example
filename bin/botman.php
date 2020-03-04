@@ -9,12 +9,14 @@ use AsyncBot\Core\Manager;
 use AsyncBot\Driver\StackOverflowChat\Authentication\ValueObject\Credentials;
 use AsyncBot\Driver\StackOverflowChat\Driver;
 use AsyncBot\Driver\StackOverflowChat\Factory as StackOverflowChatDriverFactory;
+use AsyncBot\Example\Command\Google\Listener\Listener as GoogleListener;
 use AsyncBot\Example\Command\Imdb\Listener\Listener as ImdbCommandListener;
 use AsyncBot\Example\Command\Man\Listener\Listener as ManListener;
 use AsyncBot\Example\Command\OpenGrok\Listener\Listener as OpenGrokListener;
 use AsyncBot\Example\Command\Packagist\Listener\Listener as PackagistFinderListener;
 use AsyncBot\Example\Command\Wikipedia\Listener\Listener as WikipediaListener;
 use AsyncBot\Example\Command\WordOfTheDay\Listener\Listener as WordOfTheDayCommandListener;
+use AsyncBot\Example\Command\Xkcd\Listener\Listener as XkcdListener;
 use AsyncBot\Example\Listener\OutputGitHubStatusChange;
 use AsyncBot\Example\Listener\OutputNewPhpBugs;
 use AsyncBot\Example\Listener\OutputTimerInformation;
@@ -22,6 +24,7 @@ use AsyncBot\Plugin\GitHubStatus\Parser\Html;
 use AsyncBot\Plugin\GitHubStatus\Plugin as GitHubStatusPlugin;
 use AsyncBot\Plugin\GitHubStatus\Retriever\Http;
 use AsyncBot\Plugin\GitHubStatus\Storage\InMemoryRepository;
+use AsyncBot\Plugin\GoogleSearch\Plugin as GooglePlugin;
 use AsyncBot\Plugin\Imdb\Plugin as ImdbPlugin;
 use AsyncBot\Plugin\Imdb\ValueObject\ApiKey;
 use AsyncBot\Plugin\LinuxManualPages\Plugin as LinuxManualPagesPlugin;
@@ -34,6 +37,8 @@ use AsyncBot\Plugin\PhpBugs\Storage\InMemoryRepository as PhpBugsStorage;
 use AsyncBot\Plugin\Timer\Plugin as TimerPlugin;
 use AsyncBot\Plugin\Wikipedia\Plugin as WikipediaPlugin;
 use AsyncBot\Plugin\WordOfTheDay\Plugin as WordOfTheDayPlugin;
+use AsyncBot\Plugin\Xkcd\Plugin;
+use AsyncBot\Plugin\Xkcd\Plugin as XkcdPlugin;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -72,6 +77,8 @@ $packagistPlugin    = new PackagistFinderPlugin($httpClient);
 $openGrokPlugin     = new OpenGrokPlugin($httpClient);
 $linuxManPlugin     = new LinuxManualPagesPlugin($httpClient);
 $wikipediaPlugin    = new WikipediaPlugin($httpClient);
+$googlePlugin       = new GooglePlugin($httpClient);
+$xkcdPlugin         = new XkcdPlugin($httpClient, $googlePlugin);
 
 /**
  * Set up runnable plugin(s)
@@ -96,6 +103,8 @@ $stackOverflowChatBot->onNewMessage(new PackagistFinderListener($stackOverflowCh
 $stackOverflowChatBot->onNewMessage(new OpenGrokListener($stackOverflowChatBot, $openGrokPlugin));
 $stackOverflowChatBot->onNewMessage(new ManListener($stackOverflowChatBot, $linuxManPlugin));
 $stackOverflowChatBot->onNewMessage(new WikipediaListener($stackOverflowChatBot, $wikipediaPlugin));
+$stackOverflowChatBot->onNewMessage(new GoogleListener($stackOverflowChatBot, $googlePlugin));
+$stackOverflowChatBot->onNewMessage(new XkcdListener($stackOverflowChatBot, $xkcdPlugin));
 
 /**
  * Run the bot minions

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "465a4bd07aac9de70716b06484d6c5af",
+    "content-hash": "60143f364358cb5643a588280849c2bf",
     "packages": [
         {
             "name": "amphp/amp",
@@ -1322,6 +1322,47 @@
             "time": "2019-11-29T20:42:02+00:00"
         },
         {
+            "name": "async-bot/google-search-plugin",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/async-bot/google-search-plugin.git",
+                "reference": "a2cc103d4190595a8330a6e654edea69c3f7f387"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/async-bot/google-search-plugin/zipball/a2cc103d4190595a8330a6e654edea69c3f7f387",
+                "reference": "a2cc103d4190595a8330a6e654edea69c3f7f387",
+                "shasum": ""
+            },
+            "require": {
+                "amphp/amp": "^2.2.0",
+                "async-bot/core": "dev-master",
+                "ext-dom": "*",
+                "php": "^7.4"
+            },
+            "require-dev": {
+                "infection/infection": "^0.13.4",
+                "maglnet/composer-require-checker": "^2.0",
+                "phpunit/phpunit": "^8.3",
+                "room11/dom-utils": "^1.1",
+                "slevomat/coding-standard": "^5.0.4",
+                "squizlabs/php_codesniffer": "^3.4.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AsyncBot\\Plugin\\GoogleSearch\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Google Search plugin",
+            "time": "2019-12-08T21:39:11+00:00"
+        },
+        {
             "name": "async-bot/imdb-plugin",
             "version": "dev-master",
             "source": {
@@ -1720,6 +1761,46 @@
             ],
             "description": "Word of the day plugin",
             "time": "2019-11-29T20:26:00+00:00"
+        },
+        {
+            "name": "async-bot/xkcd-plugin",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/async-bot/xkcd-plugin.git",
+                "reference": "5f4ab44aedf1d2b00eea85b04edb205b41b27be8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/async-bot/xkcd-plugin/zipball/5f4ab44aedf1d2b00eea85b04edb205b41b27be8",
+                "reference": "5f4ab44aedf1d2b00eea85b04edb205b41b27be8",
+                "shasum": ""
+            },
+            "require": {
+                "amphp/amp": "^2.2.0",
+                "async-bot/core": "dev-master",
+                "async-bot/google-search-plugin": "dev-master",
+                "php": "^7.4"
+            },
+            "require-dev": {
+                "infection/infection": "^0.13.4",
+                "maglnet/composer-require-checker": "^2.0",
+                "phpunit/phpunit": "^8.3",
+                "slevomat/coding-standard": "^5.0.4",
+                "squizlabs/php_codesniffer": "^3.4.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AsyncBot\\Plugin\\Xkcd\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "xkcd plugin",
+            "time": "2020-03-04T21:38:14+00:00"
         },
         {
             "name": "cash/lrucache",
@@ -2382,6 +2463,7 @@
         "amphp/http-client-cookies": 20,
         "async-bot/core": 20,
         "async-bot/github-status-plugin": 20,
+        "async-bot/google-search-plugin": 20,
         "async-bot/imdb-plugin": 20,
         "async-bot/linux-manual-pages-plugin": 20,
         "async-bot/open-grok-plugin": 20,
@@ -2390,7 +2472,8 @@
         "async-bot/stackoverflow-chat-driver": 20,
         "async-bot/timer-plugin": 20,
         "async-bot/wikipedia-plugin": 20,
-        "async-bot/word-of-the-day-plugin": 20
+        "async-bot/word-of-the-day-plugin": 20,
+        "async-bot/xkcd-plugin": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
